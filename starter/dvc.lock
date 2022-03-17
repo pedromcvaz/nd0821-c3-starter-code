@@ -1,0 +1,20 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python starter/train_model.py
+    deps:
+    - path: data/clean_census.csv
+      md5: 12c208530a5680c15ae19b34152286dd
+      size: 3518606
+    - path: starter/train_model.py
+      md5: fe8b7324d493175e65f6d86e9f0b71c1
+      size: 1213
+  predict:
+    cmd: python starter/predict.py
+    deps:
+    - path: model/model_file
+      md5: 1eaafa06b7d4ab17fcf80f211b67b0ad
+      size: 66093508
+    - path: starter/predict.py
+      md5: b008407c2fa4824556331507dfda0642
+      size: 1162

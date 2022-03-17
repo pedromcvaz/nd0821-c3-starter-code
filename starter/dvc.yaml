@@ -1,0 +1,11 @@
+stages:
+  train:
+    cmd: python starter/train_model.py
+    deps:
+    - data/clean_census.csv
+    - starter/train_model.py
+  predict:
+    cmd: python starter/predict.py
+    deps:
+      - model/model_file
+      - starter/predict.py

@@ -1,0 +1,4 @@
+outs:
+- md5: 1eaafa06b7d4ab17fcf80f211b67b0ad
+  size: 66093508
+  path: model_file

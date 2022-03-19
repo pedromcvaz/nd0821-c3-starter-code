@@ -1,10 +1,13 @@
 import pytest
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from fastapi.testclient import TestClient
 import os
 import sys
+
 sys.path.insert(0, os.getcwd())
 from starter.starter.ml.data import process_data
+from main import app
 from starter.starter.ml.model import train_rf_model, inference
 
 
@@ -57,7 +60,7 @@ def encoder_lb(train_data, cat_features):
 @pytest.fixture
 def preprocessed_test_data(test_data, cat_features, encoder_lb):
     encoder, lb = encoder_lb
-    X, y, _, _ =  process_data(
+    X, y, _, _ = process_data(
         test_data, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb
     )
     return X, y
@@ -69,8 +72,82 @@ def model(preprocessed_train_data):
     model = train_rf_model(X_train, y_train)
     return model
 
+
 @pytest.fixture
 def predictions(model, preprocessed_test_data):
     X_test, _ = preprocessed_test_data
     preds = inference(model, X_test)
     return preds
+
+
+@pytest.fixture
+def client():
+    with TestClient(app) as cl:
+        yield cl
+
+
+@pytest.fixture
+def payload():
+    pl = {
+        "age": 26,
+        "workclass": "Private",
+        "fnlgt": 172987,
+        "education": "Bachelors",
+        "education-num": 13,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Tech-support",
+        "relationship": "Husband",
+        "race": "White",
+        "sex": "Male",
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": 50,
+        "native-country": "United-States",
+        "salary": "<=50K"
+    }
+
+    return pl
+
+@pytest.fixture
+def payload_2():
+    pl = {
+        "age": 40,
+        "workclass": "Private",
+        "fnlgt": 121772,
+        "education": "Assoc-voc",
+        "education-num": 11,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Craft-repair",
+        "relationship": "Husband",
+        "race": "Asian-Pac-Islander",
+        "sex": "Male",
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": 40,
+        "native-country": "?",
+        "salary": ">50K"
+    }
+
+    return pl
+
+@pytest.fixture
+def payload_3():
+    pl = {
+        "age": "error",
+        "workclass": "Private",
+        "fnlgt": 17298,
+        "education": "Bachelors",
+        "education-num": 13,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Tech-support",
+        "relationship": "Husband",
+        "race": "White",
+        "sex": "Male",
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": 50,
+        "native-country": "United-States",
+        "salary": "<=50K"
+    }
+
+    return pl

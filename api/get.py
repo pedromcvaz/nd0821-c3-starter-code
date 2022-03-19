@@ -5,9 +5,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)-10s %(message)s")
 logger = logging.getLogger()
 
-URL = 'http://myapi.herokuapp.com/'
-
-headers = {'content-type': 'application/json'}
+URL = 'https://udacityml.herokuapp.com/'
 
 if __name__ == '__main__':
     response = requests.get(URL)

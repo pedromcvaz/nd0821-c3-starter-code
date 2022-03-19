@@ -4,8 +4,17 @@ stages:
     deps:
     - data/clean_census.csv
     - starter/train_model.py
+    outs:
+      - model/model_file
+      - model/encoder_file
+      - model/lb_file
   predict:
     cmd: python starter/predict.py
     deps:
       - model/model_file
       - starter/predict.py
+    outs:
+      - model/precision.json
+      - model/recall.json
+      - model/fbeta.json
+      - model/slice_output.txt

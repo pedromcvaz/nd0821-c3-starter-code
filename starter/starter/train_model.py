@@ -1,10 +1,8 @@
 # Script to train machine learning model.
-
-from sklearn.model_selection import train_test_split
-
 # Add the necessary imports for the starter code.
 import pandas as pd
 import pickle
+from sklearn.model_selection import train_test_split
 from ml.data import process_data
 from ml.model import train_rf_model
 

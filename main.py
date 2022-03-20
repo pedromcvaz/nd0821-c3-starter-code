@@ -59,7 +59,25 @@ class Data(BaseModel):
 
     class Config:
         alias_generator = replace_dash
-
+        schema_extra = {
+            "example": {
+                "age": 56,
+                "workclass": "Local-gov",
+                "fnlgt": 216851,
+                "education": "Bachelors",
+                "education-num": 13,
+                "marital-status": "Married-civ-spouse",
+                "occupation": "Tech-support",
+                "relationship": "Husband",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 0,
+                "capital-loss": 0,
+                "hours-per-week": 40,
+                "native-country": "United-States",
+                "salary": ">50K"
+            }
+        }
 
 @app.post('/predict')
 async def predict(input: Data):

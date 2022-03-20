@@ -108,23 +108,24 @@ def payload():
 
     return pl
 
+
 @pytest.fixture
 def payload_2():
     pl = {
-        "age": 40,
-        "workclass": "Private",
-        "fnlgt": 121772,
-        "education": "Assoc-voc",
-        "education-num": 11,
+        "age": 56,
+        "workclass": "Local-gov",
+        "fnlgt": 216851,
+        "education": "Bachelors",
+        "education-num": 13,
         "marital-status": "Married-civ-spouse",
-        "occupation": "Craft-repair",
+        "occupation": "Tech-support",
         "relationship": "Husband",
-        "race": "Asian-Pac-Islander",
+        "race": "White",
         "sex": "Male",
         "capital-gain": 0,
         "capital-loss": 0,
         "hours-per-week": 40,
-        "native-country": "?",
+        "native-country": "United-States",
         "salary": ">50K"
     }
 

@@ -22,9 +22,7 @@ with open('model/encoder_file', 'rb') as f:
 with open('model/lb_file', 'rb') as f:
     lb = pickle.load(f)
 
-data = pd.read_csv("data/clean_census.csv")
-
-_, test = train_test_split(data, test_size=0.20)
+test = pd.read_csv("data/test_data")
 
 test = test.reset_index(drop=True)
 

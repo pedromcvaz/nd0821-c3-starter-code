@@ -7,37 +7,37 @@ stages:
       md5: 12c208530a5680c15ae19b34152286dd
       size: 3518606
     - path: starter/train_model.py
-      md5: 1b86e77f177ac6283ce1e7362d739183
-      size: 1128
+      md5: 5b1c34eaf28d2bf5cea904933c879a88
+      size: 1172
     outs:
     - path: model/encoder_file
-      md5: 3051625cba50fa71b5cf46d945bf76e0
-      size: 2332
+      md5: 47a1e97484a6bbcca25eff200324c8aa
+      size: 2307
     - path: model/lb_file
       md5: 65c849d5a6fc4ad1c31abe0d3785fd16
       size: 399
     - path: model/model_file
-      md5: 6442a99548222b1923cc6b4956d79795
-      size: 66362932
+      md5: 1a98d0eb2908e860efa595e2f7c18bbe
+      size: 65836612
   predict:
     cmd: python starter/predict.py
     deps:
     - path: model/model_file
-      md5: 6442a99548222b1923cc6b4956d79795
-      size: 66362932
+      md5: 1a98d0eb2908e860efa595e2f7c18bbe
+      size: 65836612
     - path: starter/predict.py
-      md5: b008407c2fa4824556331507dfda0642
-      size: 1162
+      md5: 34f79a28ae934ee66209a9a82e3f4024
+      size: 1105
     outs:
     - path: model/fbeta.json
-      md5: 1f4ed289c629eb4133fe637645b952f9
+      md5: 1eee527ce1677d11058270d8d4ef934c
       size: 29
     - path: model/precision.json
-      md5: 250d2c582ac3e0351dbc067abee90bb0
+      md5: 27178ddf2cf2ec42964f9c77ab59636e
       size: 33
     - path: model/recall.json
-      md5: b3cae7aaac55d67ff06bba57b61a7819
+      md5: 0b96341de11775aa872a9f34ea9bf218
       size: 30
     - path: model/slice_output.txt
-      md5: dea86b456b4130a01bdc47c57a5a03e4
-      size: 5713
+      md5: 3b7ee711552f18c605752a6d62dac3d9
+      size: 5894

@@ -11,6 +11,8 @@ data = pd.read_csv("data/clean_census.csv")
 
 train, test = train_test_split(data, test_size=0.20)
 
+test.to_csv("data/test_data", index=False)
+
 cat_features = [
     "workclass",
     "education",
